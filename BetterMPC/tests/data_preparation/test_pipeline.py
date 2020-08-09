@@ -8,6 +8,7 @@ Created on Sun Aug  9 00:44:38 2020
 from src.data_process import pipeline 
 import stage1_config
 import pandas as pd
+import numpy as np
 from scipy.sparse import csr_matrix
 from numpy.testing import *
 
@@ -54,5 +55,3 @@ class TestPipeLine(object):
         assert_array_equal(actual.data, expected.data)
         assert_array_equal(actual.indptr, expected.indptr)
         assert_array_equal(actual.indices, expected.indices)
-        
-    def test_pipeline_

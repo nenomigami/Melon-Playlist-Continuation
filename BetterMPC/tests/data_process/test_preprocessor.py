@@ -76,7 +76,7 @@ class TestCsrMatrixMaker(object):
                         ).reset_index(drop = True)
         test_argument = uir_matrix_maker.fit_transform(test_argument)
         actual = sum(Csr_matrix_maker().fit_transform(test_argument).data)
-        expected = sum(uir_matrix_maker.len_features.values())
+        expected = sum(uir_matrix_maker.nunique_features.values())
         assert actual == expected
         
     def test_length_on_train(self):
@@ -84,6 +84,6 @@ class TestCsrMatrixMaker(object):
         test_argument = pd.read_json(stage1_config.TRAINING_DATA_FILE)
         test_argument = uir_matrix_maker.fit_transform(test_argument)
         actual = sum(Csr_matrix_maker().fit_transform(test_argument).data)
-        expected = sum(uir_matrix_maker.len_features.values())
+        expected = sum(uir_matrix_maker.nunique_features.values())
         assert test_argument.isna().sum().sum() == 0 
         assert actual == expected
