@@ -25,10 +25,5 @@ wrmf_data_pipe = Pipeline(
     )
 
 if __name__ == "__main__":
-    stage1_train = pd.concat(
-                    [pd.read_json(f) for f in stage1_config.STAGE1_TRAIN]
-                    ).reset_index(drop = True)
-    processed_train = wrmf_data_pipe.fit_transform(stage1_train)    
-    with open(stage1_config.STAGE1_PROCESSED_TRAIN_FILE, "wb") as f:
-        pkl.dump(processed_train, f)
     pass
+

@@ -23,21 +23,26 @@ SPLITED_TRAINING_DATA_FILE = [SPLITED_DATA_FOLDER + "data_I.json",
                               SPLITED_DATA_FOLDER + "data_III_a.json"]
 
 STAGE1_TRAIN = [SPLITED_TRAINING_DATA_FILE[0],
-                SPLITED_TRAINING_DATA_FILE[1],
-                SPLITED_TRAINING_DATA_FILE[3],
                 VALIDATING_DATA_FILE,
-                TESTING_DATA_FILE]
+                TESTING_DATA_FILE,
+                SPLITED_TRAINING_DATA_FILE[1],
+                SPLITED_TRAINING_DATA_FILE[3]]
 
-STAGE1_VALID = [SPLITED_TRAINING_DATA_FILE[2],
-                SPLITED_TRAINING_DATA_FILE[4]]
+STAGE1_VALID_Q = [SPLITED_TRAINING_DATA_FILE[1],
+                  SPLITED_TRAINING_DATA_FILE[3]]
+
+STAGE1_VALID_A = [SPLITED_TRAINING_DATA_FILE[2],
+                  SPLITED_TRAINING_DATA_FILE[4]]
+
+STAGE2_TRAIN = PROCESSED_DATA_FOLDER + "stage2_train.pkl"
+STAGE2_TEST1 = PROCESSED_DATA_FOLDER + "stage2_test1.pkl"
+STAGE2_TEST2 = PROCESSED_DATA_FOLDER + "stage2_test2.pkl"
 
 TARGET_VARS = ["songs", "tags"]
 
 STAGE1_PROCESSED_TRAIN_FILE = PROCESSED_DATA_FOLDER + "processed_train.pkl"
 
-PIPELINE_NAME = 'lasso_regression'
-
-TARGET = 'SalePrice'
+SAVE_FOLDER = WORKING_DIRECTORY + "model/"
 
 # input variables 
 FEATURES = ['MSSubClass', 'MSZoning', 'Neighborhood',

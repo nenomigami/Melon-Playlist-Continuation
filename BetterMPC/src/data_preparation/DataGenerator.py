@@ -18,6 +18,7 @@ class DataGenerator:
     """
     
     def _mask(self, playlists, mask_cols, del_cols):
+        np.random.seed(1000)
         playlists = playlists.reset_index(drop=True)
         q_pl = copy.deepcopy(playlists) #playlist 깊은 복사 2개
         a_pl = copy.deepcopy(playlists)
@@ -90,15 +91,16 @@ class DataGenerator:
         train3 = train.iloc[int(length * 30/31):]
         return train1, train2, train3    
 
-    def split_data(self, train):
+    def split_data(self, train, write = False):
         train1, train2, train3 = self._split(train)
         train2_q, train2_a = self._mask_data(train2)
         train3_q, train3_a = self._mask_data(train3)
-        train1.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[0])
-        train2_q.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[1])
-        train2_a.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[2])
-        train3_q.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[3])
-        train3_a.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[4])
+        if write == True:
+            train1.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[0])
+            train2_q.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[1])
+            train2_a.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[2])
+            train3_q.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[3])
+            train3_a.to_json(stage1_config.SPLITED_TRAINING_DATA_FILE[4])
         return train1, train2_q, train2_a, train3_q, train3_a
 
 if __name__ == "__main__":

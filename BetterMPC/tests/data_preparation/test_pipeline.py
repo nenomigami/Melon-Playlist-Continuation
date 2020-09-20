@@ -5,7 +5,7 @@ Created on Sun Aug  9 00:44:38 2020
 @author: ghdbs
 """
 
-from src.data_process import pipeline 
+from src.data_process import pipeline
 import stage1_config
 import pandas as pd
 import numpy as np
@@ -55,3 +55,4 @@ class TestPipeLine(object):
         assert_array_equal(actual.data, expected.data)
         assert_array_equal(actual.indptr, expected.indptr)
         assert_array_equal(actual.indices, expected.indices)
+        
